@@ -15,7 +15,7 @@
 <body>
     <div id="map"></div>
     <div class='map-overlay' id='features'>
-        <h2>Cases Per 10k People in the US</h2>
+        <h2>Cases Per 10k People in Washington State</h2>
         <div id='text-description'>
             <p>Hover over a state!</p>
         </div>
@@ -54,20 +54,18 @@
                     'step',
                     ['get', 'casePer10k'],
                     '#FFEDA0',   // stop_output_0
-                    100,          // stop_input_0
+                    200,          // stop_input_0
                     '#FED976',   // stop_output_1
-                    200,          // stop_input_1
+                    500,          // stop_input_1
                     '#FEB24C',   // stop_output_2
-                    500,          // stop_input_2
+                    750,          // stop_input_2
                     '#FD8D3C',   // stop_output_3
-                    600,         // stop_input_3
+                    1000,         // stop_input_3
                     '#FC4E2A',   // stop_output_4
-                    700,         // stop_input_4
+                    1500,         // stop_input_4
                     '#E31A1C',   // stop_output_5
-                    800,         // stop_input_5
+                    1800,         // stop_input_5
                     '#BD0026',   // stop_output_6
-                    1000,        // stop_input_6
-                    "#800026"    // stop_output_7
                 ],
                 'fill-outline-color': '#BBBBBB',
                 'fill-opacity': 0.7,
@@ -77,14 +75,13 @@
         });
 
         const layers = [
-            '0-9',
-            '10-19',
-            '20-49',
-            '50-99',
-            '100-199',
-            '200-499',
-            '500-999',
-            '1000 and more'
+            '0-200',
+            '200-500',
+            '500-750',
+            '750-1000',
+            '1000-1500',
+            '1500-1800',
+            '1800 and more'
         ];
         const colors = [
             '#FFEDA070',
@@ -93,8 +90,7 @@
             '#FD8D3C70',
             '#FC4E2A70',
             '#E31A1C70',
-            '#BD002670',
-            '#80002670'
+            '#BD002670'
         ];
 
         const legend = document.getElementById('legend');
@@ -119,7 +115,7 @@
                 layers: ['stateData-layer']
             });
             document.getElementById('text-description').innerHTML = state.length ?
-                `<h3>${state[0].properties.name}</h3><p><strong><em>${state[0].properties.density}</strong> people per square mile</em></p>` :
+                `<h3>${state[0].properties.name}</h3><p><strong><em>${state[0].properties.casePer10k}</strong> cases per 10k people</em></p>` :
                 `<p>Hover over a state!</p>`;
         });
 
